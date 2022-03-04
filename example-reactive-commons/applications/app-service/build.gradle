@@ -8,6 +8,8 @@ dependencies {
     implementation project(':usecase')
     implementation 'org.springframework.boot:spring-boot-starter'
     runtimeOnly('org.springframework.boot:spring-boot-devtools')
+    implementation 'org.reactivecommons:async-commons-rabbit-starter:1.0.0-beta9'
+    implementation 'org.springframework.amqp:spring-rabbit:2.4.2'
 }
 
 task explodedJar(type: Copy) {
