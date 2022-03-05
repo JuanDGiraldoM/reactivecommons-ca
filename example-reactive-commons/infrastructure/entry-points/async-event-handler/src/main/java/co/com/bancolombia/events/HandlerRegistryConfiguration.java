@@ -3,6 +3,7 @@ package co.com.bancolombia.events;
 import co.com.bancolombia.events.handlers.CommandsHandler;
 import co.com.bancolombia.events.handlers.EventsHandler;
 import co.com.bancolombia.events.handlers.QueriesHandler;
+import lombok.SneakyThrows;
 import org.reactivecommons.async.api.HandlerRegistry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
