@@ -41,7 +41,7 @@ public class ReactiveDirectAsyncGateway implements SaveWhoGateway, QueryTaskGate
 
     @Override
     public Mono<Void> saveTask(Task task, String target) {
-        log.info("I'm sending task to '" + target + "'");
+        log.info("I'm sending task: '" + task.getName() + "' to '" + target + "'");
         var command = new Command<>(SaveTask.NAME, UUID.randomUUID().toString(), task);
         return gateway.sendCommand(command, target);
     }
