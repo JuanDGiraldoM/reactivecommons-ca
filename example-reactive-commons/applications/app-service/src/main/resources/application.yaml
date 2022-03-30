@@ -1,0 +1,21 @@
+##Spring Configuration
+server:
+  port: 8080
+spring:
+  application:
+    name: #username
+  devtools:
+    add-properties: false
+  h2:
+    console:
+      enabled: true
+      path: /h2
+  profiles:
+    include:
+  rabbitmq:
+    host: #host
+    port: #port
+    username: #user
+    password: #passwd
+#    ssl:
+#      enabled: true
