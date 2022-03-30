@@ -3,9 +3,9 @@ server:
   port: 8080
 spring:
   application:
-    name: ToDoApplication #TODO: Replace
+    name: ToDoApplication #TODO: Replace to email username
   node:
-    name: todo #TODO: Replace
+    name: todo #TODO: Replace to complete real name
   webflux:
     base-path: "api"
   devtools:
@@ -17,9 +17,9 @@ spring:
   profiles:
     include:
   rabbitmq:
-    host: b-f7fec37d-079d-4857-818e-1234567890.mq.us-east-1.amazonaws.com #TODO: Replace
+    host: b-f7fec37d-079d-4857-818e-1234567890.mq.us-east-1.amazonaws.com #TODO: Replace with broker host
     port: 5671
-    username: admin #TODO: Replace
-    password: admin #TODO: Replace
+    username: admin #TODO: Replace with broker username
+    password: admin #TODO: Replace with broker password
     ssl:
       enabled: true

@@ -22,13 +22,11 @@ public class Handler {
 
     public Mono<ServerResponse> listTasksHandler(ServerRequest serverRequest) {
         var name = serverRequest.queryParam("name").orElse(constants.getNameWho());
-        log.info("Getting task list from '" + name + "'");
         return ServerResponse.ok().body(taskUseCase.getTaskList(name), TaskList.class);
     }
 
     public Mono<ServerResponse> saveTasksHandler(ServerRequest serverRequest) {
         var name = serverRequest.queryParam("name").orElse(constants.getNameWho());
-        log.info("Saving task to '" + name + "'");
         return serverRequest.bodyToMono(Task.class)
                 .flatMap(task -> ServerResponse.ok().body(saveTaskUseCase.saveTask(task, name), Void.class));
     }

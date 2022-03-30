@@ -18,7 +18,6 @@ public class QueryTaskUseCase {
                 .personName(target)
                 .requester(constants.getAppName())
                 .build();
-        System.out.println(queryTasks);
         return gateway.getRemoteTasks(queryTasks, target);
     }
 }

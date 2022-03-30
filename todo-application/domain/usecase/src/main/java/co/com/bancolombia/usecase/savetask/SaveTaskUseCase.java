@@ -20,7 +20,8 @@ public class SaveTaskUseCase {
     private final WhoIsUseCase whoIsUseCase;
 
     public Mono<Void> saveTask(Task task, String target) {
-        if (target.equals(constants.getNameWho())) return saveLocalTask(task);
+        if (target.equals(constants.getNameWho()))
+            return saveLocalTask(task);
         return saveRemoteTask(task, target);
     }
 

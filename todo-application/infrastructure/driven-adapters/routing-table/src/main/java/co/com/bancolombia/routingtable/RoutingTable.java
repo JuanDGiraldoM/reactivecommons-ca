@@ -20,7 +20,7 @@ public class RoutingTable implements TaskRoutingTable {
     }
 
     public String getRouteName(String name) {
-        log.info("Getting app name '" + name + "' from cache");
+        log.info("Getting app name of '" + name + "' from cache");
         return routingTable.get(name);
     }
 

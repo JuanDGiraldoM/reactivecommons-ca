@@ -21,6 +21,7 @@ public class ReactiveEventsGateway implements WhoIsGateway {
     @Override
     public Mono<Void> emitWhoIs(WhoIs whoIs) {
         var event = new DomainEvent<>(WhoIs.NAME, UUID.randomUUID().toString(), whoIs);
+        log.info("I'm asking for '" + whoIs.getWho() + "'");
         return Mono.from(domainEventBus.emit(event))
                 .then(Mono.empty());
     }

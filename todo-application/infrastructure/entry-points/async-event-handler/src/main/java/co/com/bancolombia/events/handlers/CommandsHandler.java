@@ -22,14 +22,14 @@ public class CommandsHandler {
 
     public Mono<Void> handleSaveWho(Command<SaveWho> command) {
         var saveWho = command.getData();
-        log.info("Resolve '" + saveWho.getWho() + "' to '" + saveWho.getAppName() + "'");
+        log.info("I resolve '" + saveWho.getWho() + "' to '" + saveWho.getAppName() + "'");
         return saveWhoUseCase.saveWho(saveWho)
                 .flatMap(data -> whoIsRouter.routeReply(data.getWho(), data));
     }
 
     public Mono<Void> handleSaveTask(Command<SaveTask> command) {
         var saveTask = command.getData();
-        log.info("Saving task " + saveTask.getName());
+        log.info("I'm saving task '" + saveTask.getName() + "'");
         return saveTaskUseCase.saveLocalTask(saveTask);
     }
 }
