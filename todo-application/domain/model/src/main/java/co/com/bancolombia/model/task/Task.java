@@ -9,6 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder(toBuilder = true)
 public class Task {
+    public static final String NAME = "tasks.save";
+
     private String name;
     private String description;
     private String supervisor;

@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: ToDoApplication
+  webflux:
+    base-path: "api"
   devtools:
     add-properties: false
   h2:
