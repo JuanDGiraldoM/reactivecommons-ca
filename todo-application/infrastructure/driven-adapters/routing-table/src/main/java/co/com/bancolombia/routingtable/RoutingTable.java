@@ -3,10 +3,12 @@ package co.com.bancolombia.routingtable;
 
 import co.com.bancolombia.model.savewho.SaveWho;
 import co.com.bancolombia.model.task.gateways.TaskRoutingTable;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+@Component
 public class RoutingTable implements TaskRoutingTable {
 
     private static final ConcurrentHashMap<String, String> routingTable = new ConcurrentHashMap<>();
