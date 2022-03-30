@@ -3,7 +3,9 @@ server:
   port: 8080
 spring:
   application:
-    name: ToDoApplication
+    name: ToDoApplication #TODO: Replace
+  node:
+    name: todo #TODO: Replace
   webflux:
     base-path: "api"
   devtools:
@@ -14,3 +16,10 @@ spring:
       path: /h2
   profiles:
     include:
+  rabbitmq:
+    host: b-f7fec37d-079d-4857-818e-1234567890.mq.us-east-1.amazonaws.com #TODO: Replace
+    port: 5671
+    username: admin #TODO: Replace
+    password: admin #TODO: Replace
+    ssl:
+      enabled: true
