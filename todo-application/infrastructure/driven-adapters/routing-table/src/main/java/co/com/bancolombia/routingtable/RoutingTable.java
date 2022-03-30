@@ -3,11 +3,13 @@ package co.com.bancolombia.routingtable;
 
 import co.com.bancolombia.model.savewho.SaveWho;
 import co.com.bancolombia.model.task.gateways.TaskRoutingTable;
+import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
 import java.util.concurrent.ConcurrentHashMap;
 
+@Log
 @Component
 public class RoutingTable implements TaskRoutingTable {
 
@@ -18,6 +20,7 @@ public class RoutingTable implements TaskRoutingTable {
     }
 
     public String getRouteName(String name) {
+        log.info("Getting " + name + " from cache");
         return routingTable.get(name);
     }
 

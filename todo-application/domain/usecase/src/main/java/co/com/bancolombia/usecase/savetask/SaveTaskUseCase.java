@@ -20,12 +20,11 @@ public class SaveTaskUseCase {
     private final WhoIsUseCase whoIsUseCase;
 
     public Mono<Void> saveTask(Task task, String target) {
-        if (target.equals(constants.getNameWho()))
-            return saveLocalTask(task);
+        if (target.equals(constants.getNameWho())) return saveLocalTask(task);
         return saveRemoteTask(task, target);
     }
 
-    public Mono<Void> saveLocalTask(Task task){
+    public Mono<Void> saveLocalTask(Task task) {
         return repository.saveTask(task);
     }
 
@@ -34,6 +33,6 @@ public class SaveTaskUseCase {
             return gateway.saveTask(task, routingTable.getRouteName(target));
 
         return whoIsUseCase.discover(target)
-                .then(saveRemoteTask(task, target));
+                .flatMap(appName -> gateway.saveTask(task, appName));
     }
 }

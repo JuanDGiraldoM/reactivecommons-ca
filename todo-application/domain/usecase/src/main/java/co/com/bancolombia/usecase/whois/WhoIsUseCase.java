@@ -1,6 +1,7 @@
 package co.com.bancolombia.usecase.whois;
 
 import co.com.bancolombia.model.constants.Constants;
+import co.com.bancolombia.model.savewho.SaveWho;
 import co.com.bancolombia.model.whois.WhoIs;
 import co.com.bancolombia.model.whois.gateways.WhoIsGateway;
 import co.com.bancolombia.model.whois.gateways.WhoIsRouter;
@@ -20,7 +21,7 @@ public class WhoIsUseCase {
         return gateway.emitWhoIs(whoIs);
     }
 
-    public Mono<Void> discover(String target) {
+    public Mono<String> discover(String target) {
         var whoIsObject = WhoIs.builder()
                 .who(target)
                 .replyTo(constants.getAppName())
@@ -28,6 +29,7 @@ public class WhoIsUseCase {
 
         return emitWhoIs(whoIsObject)
                 .then(router.register(target)
-                        .flatMap(saveWhoUseCase::saveWho));
+                        .flatMap(saveWhoUseCase::saveWho)
+                        .map(SaveWho::getAppName));
     }
 }

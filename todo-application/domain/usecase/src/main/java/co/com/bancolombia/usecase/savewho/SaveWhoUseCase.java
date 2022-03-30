@@ -30,7 +30,8 @@ public class SaveWhoUseCase {
         return gateway.saveWho(saveWho, target);
     }
 
-    public Mono<Void> saveWho(SaveWho saveWho) {
-        return routingTable.registerRoute(saveWho);
+    public Mono<SaveWho> saveWho(SaveWho saveWho) {
+        return routingTable.registerRoute(saveWho)
+                .thenReturn(saveWho);
     }
 }

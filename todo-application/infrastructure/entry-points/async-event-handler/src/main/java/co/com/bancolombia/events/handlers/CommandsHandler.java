@@ -21,7 +21,8 @@ public class CommandsHandler {
     public Mono<Void> handleSaveWho(Command<SaveWho> command) {
         var saveWho = command.getData();
         log.info("Resolve " + saveWho.getWho() + " to " + saveWho.getAppName());
-        return saveWhoUseCase.saveWho(saveWho);
+        return saveWhoUseCase.saveWho(saveWho)
+                .then(Mono.empty());
     }
 
     public Mono<Void> handleSaveTask(Command<SaveTask> command) {

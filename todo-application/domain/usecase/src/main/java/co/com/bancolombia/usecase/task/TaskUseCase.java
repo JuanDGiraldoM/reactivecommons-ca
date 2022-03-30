@@ -31,7 +31,7 @@ public class TaskUseCase {
             return queryTaskUseCase.getRemoteTasks(target, constants.getAppName());
 
         return whoIsUseCase.discover(target)
-                .then(getRemoteTaskList(target));
+                .flatMap(appName -> queryTaskUseCase.getRemoteTasks(appName, constants.getAppName()));
     }
 
 }
