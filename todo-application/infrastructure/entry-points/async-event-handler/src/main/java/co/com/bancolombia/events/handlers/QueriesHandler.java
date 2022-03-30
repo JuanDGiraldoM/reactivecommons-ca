@@ -16,7 +16,7 @@ public class QueriesHandler {
     private final TaskUseCase taskUseCase;
 
     public Mono<TaskList> queryTask(QueryTask queryTask) {
-        log.info("Asking tasks to " + queryTask.getRequester());
+        log.info("Asking tasks to '" + queryTask.getRequester() + "'");
         return taskUseCase.getTaskList(queryTask.getPersonName());
     }
 }

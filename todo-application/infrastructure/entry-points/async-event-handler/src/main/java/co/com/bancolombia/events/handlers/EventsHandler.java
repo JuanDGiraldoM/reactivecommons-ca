@@ -17,7 +17,7 @@ public class EventsHandler {
 
     public Mono<Void> listenWhoIs(DomainEvent<WhoIs> event) {
         var whoIs = event.getData();
-        log.info(whoIs.getReplyTo() + " is asking for " + whoIs.getWho());
+        log.info("'" + whoIs.getReplyTo() + "' is asking for '" + whoIs.getWho() + "'");
         return saveWhoUseCase.saveWho(event.getData());
     }
 }

@@ -28,10 +28,10 @@ public class TaskUseCase {
 
     private Mono<TaskList> getRemoteTaskList(String target) {
         if (routingTable.containsKey(target))
-            return queryTaskUseCase.getRemoteTasks(target, constants.getAppName());
+            return queryTaskUseCase.getRemoteTasks(routingTable.getRouteName(target));
 
         return whoIsUseCase.discover(target)
-                .flatMap(appName -> queryTaskUseCase.getRemoteTasks(appName, constants.getAppName()));
+                .flatMap(queryTaskUseCase::getRemoteTasks);
     }
 
 }

@@ -21,9 +21,10 @@ public class ReactiveReplyRouter implements WhoIsRouter {
         return processor.asMono();
     }
 
-    public void routeReply(String correlationID, SaveWho data) {
+    public Mono<Void> routeReply(String correlationID, SaveWho data) {
         final Sinks.One<SaveWho> processor = processors.remove(correlationID);
         if (processor != null)
             processor.tryEmitValue(data);
+        return Mono.empty();
     }
 }

@@ -7,5 +7,5 @@ public interface WhoIsRouter {
 
     Mono<SaveWho> register(String correlationID);
 
-    void routeReply(String correlationID, SaveWho data);
+    Mono<Void> routeReply(String correlationID, SaveWho data);
 }
