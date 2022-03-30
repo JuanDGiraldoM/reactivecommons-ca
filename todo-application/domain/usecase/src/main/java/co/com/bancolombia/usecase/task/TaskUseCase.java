@@ -22,8 +22,12 @@ public class TaskUseCase {
 
     public Mono<TaskList> getTaskList(String target) {
         if (target.equals(constants.getNameWho()))
-            return repository.getTaskList();
+            return getLocalTaskList();
         return getRemoteTaskList(target);
+    }
+
+    public Mono<TaskList> getLocalTaskList() {
+        return repository.getTaskList();
     }
 
     private Mono<TaskList> getRemoteTaskList(String target) {
